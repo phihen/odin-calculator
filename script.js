@@ -12,6 +12,10 @@ numberKeys.forEach((elem) => {
     elem.addEventListener("click", populateNumber);
 });
 
+operatorKeys.forEach((elem) => {
+    elem.addEventListener("click", populateOperator);
+});
+
 function populateNumber(e) {
     let displayText = calculatorDisplay.textContent;
 
@@ -21,6 +25,16 @@ function populateNumber(e) {
     else {
         calculatorDisplay.textContent += e.target.textContent;
     }
+}
+
+function populateOperator(e) {
+    let displayText = calculatorDisplay.textContent;
+
+    if(/[\+\-\u00D7÷]/.test(displayText)) {
+        return;
+    }
+    
+    calculatorDisplay.textContent += e.target.textContent;
 }
 
 clearKey.addEventListener("click", (e) => {
